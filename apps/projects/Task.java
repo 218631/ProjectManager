@@ -6,7 +6,38 @@ import apps.people.Member;
 public class Task extends Base
 {
 
-  private Member executor;
+  @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((Task_End == null) ? 0 : Task_End.hashCode());
+		result = prime * result + ((executor == null) ? 0 : executor.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Task other = (Task) obj;
+		if (Task_End == null) {
+			if (other.Task_End != null)
+				return false;
+		} else if (!Task_End.equals(other.Task_End))
+			return false;
+		if (executor == null) {
+			if (other.executor != null)
+				return false;
+		} else if (!executor.equals(other.executor))
+			return false;
+		return true;
+	}
+
+private Member executor;
   private String Task_End;
   
   public Task(String t)

@@ -11,6 +11,8 @@ class ProjectManger
 {
     public static void main(String[] args)
     {
+      
+      boolean _true=true;
       ArrayList<Project> prjcts = new ArrayList<>();
       ArrayList<Member> persons = new ArrayList<>();
       ArrayList<Task> Tasks= new ArrayList<>();
@@ -23,20 +25,15 @@ class ProjectManger
       String operation=null;
       String target=null;
       String temp1[]=null;	//wczytywana komenda
+      String temp=null;
       
-      while(true)
+      while(_true==true)
       {
-    	  String temp = ins.nextLine();
-    	  if(temp=="end")
-    	  {
-    		  operation = "end";
-    	  }
-    	  
-    	  if(temp!="end" && !temp.isEmpty() ) {
+    	  temp = ins.nextLine(); 
     	  temp1=temp.split(" ");	//dzielimy komende na czesci
     	  operation = temp1[0];		//podstawowa operacja
     	  target = temp1[1];		//cel operacji osoba/zadanie/projekt
-    	  }
+    	
 
     	  switch(operation){
     	  case "add":
@@ -245,11 +242,13 @@ class ProjectManger
     			  break;
     		  }
     	  case "end":
+
     		  break;
     		default:
     		  break;
     	  }	 
-      }      
+      }  
     }
-  }
+   }
 }
+

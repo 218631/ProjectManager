@@ -5,7 +5,38 @@ import java.util.*;
 
 public class Project extends Base
 {
-  private ArrayList<Task> tasks;
+  @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((members == null) ? 0 : members.hashCode());
+		result = prime * result + ((tasks == null) ? 0 : tasks.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Project other = (Project) obj;
+		if (members == null) {
+			if (other.members != null)
+				return false;
+		} else if (!members.equals(other.members))
+			return false;
+		if (tasks == null) {
+			if (other.tasks != null)
+				return false;
+		} else if (!tasks.equals(other.tasks))
+			return false;
+		return true;
+	}
+
+private ArrayList<Task> tasks;
   private ArrayList<Member> members;
 
 
