@@ -1,12 +1,14 @@
 package apps.projects;
 
+
 import apps.people.Member;
 
 public class Task extends Base
 {
 
   private Member executor;
-
+  private String Task_End;
+  
   public Task(String t)
   {
     super(t);

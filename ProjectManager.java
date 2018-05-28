@@ -58,10 +58,9 @@ class ProjectManger
 					{
 						Memb = new Member(temp1[3],temp1[4]); 
 						 persons.add(Memb); 
-						 System.out.println(temp2[0]);
-						  if(temp2[0]=="project") {
+						  if(temp.contains("project")) {
 		    				  prjcts.get((Integer.parseInt(temp2[1]))).addMember(Memb);}
-		    			  if(temp2[0]=="task") {
+		    			  if(temp.contains("task")) {
 		    				  Tasks.get(Integer.parseInt(temp2[1])).assigTo(Memb);}
 					}
 	  			  if(temp1.length==5 && temp2==null) //dodatkowo email
@@ -73,9 +72,9 @@ class ProjectManger
 					{   					
 						Memb = new Member(temp1[3],temp1[4],temp1[5]);
 						persons.add(Memb); 
-						  if(temp2[0]=="project") {
+						if(temp.contains("project")) {
 		    				  prjcts.get((Integer.parseInt(temp2[1]))).addMember(Memb);}
-		    			  if(temp2[0]=="task") {
+		    			  if(temp.contains("task")) {
 		    				  Tasks.get(Integer.parseInt(temp2[1])).assigTo(Memb);}
 					}
 	  			
@@ -168,14 +167,12 @@ class ProjectManger
     			  if(temp1.length>2) {
     				  if(temp1[2].contains(":")) {
     					  String temp3[]=temp1[2].split(":");
-    					  ArrayList<Member> per_in_pro = prjcts.get((Integer.parseInt(temp3[1]))).getM();
-    					  System.out.println(per_in_pro);
-    					  if(Integer.parseInt(temp3[1])>prjcts.size()-1)
+     					  if(Integer.parseInt(temp3[1])>prjcts.size()-1)
     					  {
     						  System.out.println("Nie ma projektu o tak duzym indeksie");
     					  }
     					  else {
-    						  //ArrayList<Member> per_in_pro = prjcts.get((Integer.parseInt(temp3[1]))).getM();
+    						  ArrayList<Member> per_in_pro = prjcts.get((Integer.parseInt(temp3[1]))).getM();
     						  for(Member person : per_in_pro )
     						  {
     							  person.Print();
@@ -193,11 +190,12 @@ class ProjectManger
 //zadania    			  
     		  case "task":
     			  
-    			  if(!temp1[2].contains(":"))
-    			 for(Task _task : Tasks)
-    			 {
-    				_task.Print();
-    			 }
+    			  if(!temp1[2].contains(":")) {
+    				  for(Task _task : Tasks)
+    				  {
+    					  _task.Print();
+    				  }
+    			  }
     			  else {
     				  String temp3[]=temp1[2].split(":");
     				  for(Task _task : prjcts.get((Integer.parseInt(temp3[1]))).getT())
